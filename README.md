@@ -3,6 +3,7 @@ y back propio que consume https://rickandmortyapi.com/api/character
 Adicionalmente con uso de inteligencia para levantar servidor del back scr/be/server.js y resolucion de problemas como estilos.
 
 # QuickStart
+ejecutar `node src/be/server.js`
 ejecutar `npm start`
 abrir en el navegador la url http://localhost:3000
 
