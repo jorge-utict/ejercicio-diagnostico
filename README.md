@@ -1,3 +1,12 @@
+Esta aplicacion fue creada usando plantilla de front del curso tomado en diciembre https://www.udemy.com/course/react-js-para-principiantes-desde-cero-curso-gratuito/
+y back propio que consume https://rickandmortyapi.com/api/character
+Adicionalmente con uso de inteligencia para levantar servidor del back scr/be/server.js y resolucion de problemas como estilos.
+
+# QuickStart
+ejecutar `npm start`
+abrir en el navegador la url http://localhost:3000
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
