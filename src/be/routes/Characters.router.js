@@ -3,7 +3,11 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const response = await fetch('https://rickandmortyapi.com/api/character');
+    const page = req.query.page || 1;
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}`
+    );
+
     const data = await response.json();
     const personajes = data.results.map(p => ({
       id: p.id,
@@ -14,7 +18,12 @@ router.get('/', async (req, res) => {
       genero: p.gender,
       imagen: p.image
     }));
-    res.json(personajes);
+    res.json({
+      page: Number(page),
+      totalPages: data.info.pages,
+      totalResults: data.info.count,
+      results: personajes
+    });
 
   } catch (error) {
     // console.error('Error al obtener los personajes:', error);

@@ -7,22 +7,33 @@ function App() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/characters')
+    if (page > totalPages) return;
+    setLoading(true);
+    setError(null);
+    fetch(`http://localhost:4000/api/v1/characters?page=${page}`)
     .then((res) => {
-      if (!res.ok) throw new Error("Error en la API");
+      if (!res.ok) {
+        if (res.status === 404) {
+          throw new Error("No hay más páginas disponibles");
+        }
+        throw new Error("Error en la API");
+      }
       return res.json();
     })
     .then((data) => {
-      setCharacters(data);
+      setCharacters(data.results);
+      setTotalPages(data.totalPages);
       setLoading(false);
     })
     .catch((err) => {
       setError(err.message);
       setLoading(false);
     });
-  }, []);
+  }, [page]);
 
   const filtro = characters.filter((p) =>
     p.nombre.toLowerCase().includes(search.toLowerCase())
@@ -43,6 +54,13 @@ function App() {
             className="btn-search"
           />
         </header>
+        <button onClick={() => setPage(page - 1)} disabled={page === 1}>Anterior</button>
+        <button 
+          onClick={() => setPage(prev => prev + 1)}
+          disabled={loading || page >= totalPages}
+        >
+          Siguiente
+        </button>
       </div>
       <div className="characters">
         <div className="container-characters">
