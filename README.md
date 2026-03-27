@@ -7,6 +7,11 @@ ejecutar `node src/be/server.js`
 ejecutar `npm start`
 abrir en el navegador la url http://localhost:3000
 
+# Screenshots
+<img width="1918" height="723" alt="image" src="https://github.com/user-attachments/assets/3ee3b647-4e8f-46f8-addb-dbcf40d08044" />
+
+<img width="1916" height="723" alt="image" src="https://github.com/user-attachments/assets/7ee0f86b-7166-4d2c-85e7-d051bbdb9cc9" />
+
 
 # Getting Started with Create React App
 
